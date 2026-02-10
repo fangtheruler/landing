@@ -1,10 +1,21 @@
 export const metadata = {
-  title: "Neon Tech Landing",
-  description: "Технологичный лендинг с кнопкой в Twitter"
+  title: "ClawdSearcher",
+  description: "We are looking for gems at an early stage in the Clawd ecosystem.",
+  openGraph: {
+    title: "ClawdSearcher",
+    description: "We are looking for gems at an early stage in the Clawd ecosystem.",
+    images: ["/logo.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ClawdSearcher",
+    description: "We are looking for gems at an early stage in the Clawd ecosystem.",
+    images: ["/logo.jpg"],
+  },
 };
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
