@@ -27,13 +27,13 @@ export default function Home() {
 
   return (
     <div className="page">
-      <div className="lobsterCorner" aria-hidden="true">
+      <div className="logoBg" aria-hidden="true">
         <Image
-          src="/lobster.png"
+          src="/logo-bg.png"
           alt=""
-          width={200}
-          height={200}
-          className="lobsterImg"
+          fill
+          className="logoBgImg"
+          priority
         />
       </div>
 
