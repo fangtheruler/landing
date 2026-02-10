@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import "./globals.css";
 
-const TWITTER_URL = "https://twitter.com/your_handle"; // поменяй на свой
+const TWITTER_URL = "https://twitter.com/your_handle"; // замени на свой
 
 export default function Home() {
   const [soon, setSoon] = useState(false);
@@ -12,7 +12,15 @@ export default function Home() {
   return (
     <div className="page">
       <header className="header">
-        <div className="brandTopLeft">ClawdSearcher</div>
+        <div className="brandTopLeft">
+          <span className="brandIcon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="6.5" />
+              <line x1="15.5" y1="15.5" x2="20" y2="20" />
+            </svg>
+          </span>
+          <span>ClawdSearcher</span>
+        </div>
 
         <div className="headerRight">
           <button
@@ -28,6 +36,10 @@ export default function Home() {
       </header>
 
       <main className="main">
+        <p className="tagline">
+          We are looking for gems at an early stage in the Clawd ecosystem
+        </p>
+
         <section className="miniCard">
           <div className="miniLogo">
             <Image
