@@ -26,17 +26,16 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="page">
-      <div className="logoBg" aria-hidden="true">
+          <div className="logoBg" aria-hidden="true">
         <Image
           src="/logo-bg.png"
           alt=""
-          fill
+          width={900}
+          height={900}
           className="logoBgImg"
           priority
         />
       </div>
-
       <header className="header">
         <button
           type="button"
