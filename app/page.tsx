@@ -8,19 +8,12 @@ const TWITTER_URL = "https://twitter.com/your_handle"; // замени на св
 
 export default function Home() {
   const [soon, setSoon] = useState(false);
+  const tiles = ["Slot 1", "Slot 2", "Slot 3", "Slot 4"];
 
   return (
     <div className="page">
       <header className="header">
-        <div className="brandTopLeft">
-          <span className="brandIcon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <circle cx="11" cy="11" r="6.5" />
-              <line x1="15.5" y1="15.5" x2="20" y2="20" />
-            </svg>
-          </span>
-          <span>ClawdSearcher</span>
-        </div>
+        <div className="brandTopLeft">ClawdSearcher</div>
 
         <div className="headerRight">
           <button
@@ -40,20 +33,38 @@ export default function Home() {
           We are looking for gems at an early stage in the Clawd ecosystem
         </p>
 
-        <section className="miniCard">
-          <div className="miniLogo">
-            <Image
-              src="/logo.jpg"
-              alt="ClawdSearcher logo"
-              width={56}
-              height={56}
-              className="miniLogoImg"
-              priority
-            />
-          </div>
+        <div
+          className="miniCluster"
+        >
+          <section className="miniCard">
+            <div className="miniLogo">
+              <Image
+                src="/logo.jpg"
+                alt="ClawdSearcher logo"
+                width={56}
+                height={56}
+                className="miniLogoImg"
+                priority
+              />
+            </div>
 
-          <div className="miniTitle">ClawdSearcher</div>
-        </section>
+            <div className="miniTitle">ClawdSearcher</div>
+          </section>
+
+          <div className="miniGrid">
+            {tiles.map((label, i) => (
+              <button
+                key={label}
+                type="button"
+                className="miniTile"
+                // пока просто кликается, позже добавим действия
+                onClick={() => console.log(`Clicked tile ${i + 1}`)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <a
           href={TWITTER_URL}
