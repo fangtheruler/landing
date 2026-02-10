@@ -33,9 +33,7 @@ export default function Home() {
           We are looking for gems at an early stage in the Clawd ecosystem
         </p>
 
-        <div
-          className="miniCluster"
-        >
+        <div className="miniCluster">
           <section className="miniCard">
             <div className="miniLogo">
               <Image
@@ -57,7 +55,6 @@ export default function Home() {
                 key={label}
                 type="button"
                 className="miniTile"
-                // пока просто кликается, позже добавим действия
                 onClick={() => console.log(`Clicked tile ${i + 1}`)}
               >
                 {label}
