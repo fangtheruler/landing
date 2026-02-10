@@ -209,21 +209,27 @@ body {
 /* Одна плитка */
 
 .miniTile {
-  min-height: 120px;          /* заметно выше, чем главное окно */
-  border-radius: 16px;
+  min-height: 180px;
+  border-radius: 18px;
   border: 1px solid rgba(11, 18, 32, 0.08);
-  background: rgba(255, 255, 255, 0.9);
-  padding: 18px 18px;
-  font-size: 15px;
-  font-weight: 540;
+  background: var(--card);           /* тот же мягко‑серый, что и главное окно */
+  padding: 22px 22px;
+  font-size: 16px;
+  font-weight: 560;
   color: var(--ink);
   cursor: pointer;
   text-align: left;
-  box-shadow: 0 18px 40px rgba(11, 18, 32, 0.18);
+  box-shadow: 0 22px 52px rgba(11, 18, 32, 0.18);
   transition:
     transform 140ms ease,
     box-shadow 140ms ease,
     background-color 140ms ease;
+}
+
+.miniTile:hover {
+  transform: translateY(-3px);
+  background: #d7d7e2;               /* чуть темнее при наведении */
+  box-shadow: 0 28px 64px rgba(11, 18, 32, 0.24);
 }
 
 .miniTile:hover {
