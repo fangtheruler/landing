@@ -1,9 +1,11 @@
 :root {
-  --bg: #f4eadb; /* молочно-бежевый фон */
-  --ink: #0b1220;
-  --muted: rgba(11, 18, 32, 0.65);
-  --card: #e1d1be; /* чуть темнее фона */
-  --line: rgba(11, 18, 32, 0.14);
+  --bg: #1a0a0f;           /* тёмный пурпурно-красный фон */
+  --bg-soft: #2d1218;
+  --card: #3d1822;
+  --card-hover: #4a1f2a;
+  --ink: #f5e6eb;
+  --muted: rgba(245, 230, 235, 0.65);
+  --line: rgba(245, 230, 235, 0.12);
 }
 
 *,
@@ -23,72 +25,95 @@ body {
     Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   background: var(--bg);
   color: var(--ink);
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Cpath fill='%23f5e6eb' stroke='%238b5a6b' stroke-width='1.2' d='M14 4 Q6 10 8 18 L14 22 L14 4 Z M18 4 Q26 10 24 18 L18 22 L18 4 Z'/%3E%3C/svg%3E") 0 0, auto;
+}
+
+a, button {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Cpath fill='%23f5e6eb' stroke='%238b5a6b' stroke-width='1.2' d='M14 4 Q6 10 8 18 L14 22 L14 4 Z M18 4 Q26 10 24 18 L18 22 L18 4 Z'/%3E%3C/svg%3E") 0 0, pointer;
 }
 
 .page {
   min-height: 100%;
 }
 
-/* Шапка */
+/* Шапка: круглый логотип + название */
 
 .header {
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 18px 22px;
+  padding: 16px 22px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
   background: linear-gradient(
     to bottom,
-    rgba(244, 234, 219, 0.96),
-    rgba(244, 234, 219, 0)
+    rgba(26, 10, 15, 0.98),
+    rgba(26, 10, 15, 0)
   );
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
 }
 
-.brandTopLeft {
-  font-size: 34px;
+.brandBlock {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+.brandLogo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(245, 230, 235, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.brandLogoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.brandTitle {
+  font-size: 28px;
   font-weight: 750;
   letter-spacing: -0.06em;
-  line-height: 1;
-  background: linear-gradient(120deg, #0b1220, #3b4252);
-  -webkit-background-clip: text;
-  color: transparent;
+  color: var(--ink);
 }
 
 .headerRight {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px;
+  gap: 6px;
 }
 
-/* Главная кнопка */
-
 .walletButton {
-  border: 1px solid #cebfa8;
-  background: #e6d8c4;
-  color: #111827;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
   padding: 10px 18px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 650;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0 10px 28px rgba(11, 18, 32, 0.16);
-  transition:
-    transform 120ms ease,
-    box-shadow 120ms ease,
-    background-color 120ms ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
 }
 
 .walletButton:hover {
   transform: translateY(-1px);
-  background: #ddccb5;
-  box-shadow: 0 14px 36px rgba(11, 18, 32, 0.2);
+  background: var(--card-hover);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
 .soon {
@@ -96,172 +121,75 @@ body {
   color: var(--muted);
 }
 
-/* Основная часть */
-
 .main {
   max-width: 980px;
   margin: 0 auto;
-  padding: 46px 22px 70px;
+  padding: 40px 22px 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22px;
+  gap: 24px;
 }
-
-/* Текст над главным окном — крупнее и тем же стилем, что логотип */
 
 .tagline {
   margin: 0;
-  font-size: 20px;
-  line-height: 1.6;
+  font-size: 40px;
+  line-height: 1.3;
   text-align: center;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  max-width: 720px;
-  background: linear-gradient(120deg, #0b1220, #3b4252);
-  -webkit-background-clip: text;
-  color: transparent;
+  font-weight: 750;
+  letter-spacing: -0.06em;
+  max-width: 900px;
+  color: var(--ink);
 }
-
-/* Кластер: главное окно + скрытые плитки */
-
-.miniCluster {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-
-/* Главное окно */
-
-.miniCard {
-  width: 220px;
-  background: var(--card);
-  border-radius: 18px;
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border: 1px solid rgba(11, 18, 32, 0.08);
-  box-shadow:
-    0 18px 40px rgba(11, 18, 32, 0.18),
-    0 0 0 1px rgba(255, 255, 255, 0.6);
-  cursor: default;
-}
-
-/* Лого в главном окне */
-
-.miniLogo {
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 10px 24px rgba(0, 0, 0, 0.25);
-}
-
-.miniLogoImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Текст в окне */
-
-.miniTitle {
-  font-size: 20px;
-  font-weight: 720;
-  letter-spacing: -0.04em;
-  color: rgba(11, 18, 32, 0.95);
-}
-
-/* Четыре окна — по площади существенно больше главного, скрыты по умолчанию */
 
 .miniGrid {
-  position: absolute;
-  top: 100%;
-  margin-top: 14px;
-  width: 660px;              /* ~3 раза шире главного */
-  max-width: 100vw;
+  width: min(780px, 100%);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  opacity: 0;
-  transform: translateY(12px);
-  pointer-events: none;
-  transition:
-    opacity 160ms ease-out,
-    transform 160ms ease-out;
+  gap: 20px;
 }
-
-/* Показываем плитки, когда навели на кластер (главное окно) */
-
-.miniCluster:hover .miniGrid {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-/* Одна плитка */
 
 .miniTile {
   min-height: 180px;
   border-radius: 18px;
-  border: 1px solid rgba(11, 18, 32, 0.08);
-  background: var(--card);           /* тот же мягко‑серый, что и главное окно */
-  padding: 22px 22px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 22px;
   font-size: 16px;
   font-weight: 560;
   color: var(--ink);
-  cursor: pointer;
   text-align: left;
-  box-shadow: 0 22px 52px rgba(11, 18, 32, 0.18);
-  transition:
-    transform 140ms ease,
-    box-shadow 140ms ease,
-    background-color 140ms ease;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
 
 .miniTile:hover {
   transform: translateY(-3px);
-  background: #d7d7e2;               /* чуть темнее при наведении */
-  box-shadow: 0 28px 64px rgba(11, 18, 32, 0.24);
+  background: var(--card-hover);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.4);
 }
-
-.miniTile:hover {
-  transform: translateY(-2px);
-  background: #f1e2cf;
-  box-shadow: 0 22px 52px rgba(11, 18, 32, 0.22);
-}
-
-/* Кнопка Twitter */
 
 .twitterBtn {
   width: 54px;
   height: 54px;
   border-radius: 999px;
-  border: 1px solid rgba(11, 18, 32, 0.14);
-  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
   display: grid;
   place-items: center;
-  box-shadow: 0 16px 44px rgba(11, 18, 32, 0.16);
-  transition:
-    transform 120ms ease,
-    box-shadow 120ms ease;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  transition: transform 120ms ease, box-shadow 120ms ease;
   text-decoration: none;
 }
 
 .twitterBtn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 20px 52px rgba(11, 18, 32, 0.2);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.4);
 }
 
 .xIcon {
   width: 18px;
   height: 18px;
-  fill: #0b1220;
+  fill: var(--ink);
 }
