@@ -4,16 +4,33 @@ import Image from "next/image";
 import { useState } from "react";
 import "./globals.css";
 
-const TWITTER_URL = "https://twitter.com/your_handle"; // замени на свой
+const TWITTER_URL = "https://twitter.com/your_handle";
 
 export default function Home() {
   const [soon, setSoon] = useState(false);
+  const [showSlots, setShowSlots] = useState(false);
   const tiles = ["Slot 1", "Slot 2", "Slot 3", "Slot 4"];
 
   return (
     <div className="page">
       <header className="header">
-        <div className="brandTopLeft">ClawdSearcher</div>
+        <button
+          type="button"
+          className="brandBlock"
+          onClick={() => setShowSlots((v) => !v)}
+        >
+          <div className="brandLogo">
+            <Image
+              src="/logo.jpg"
+              alt="ClawdSearcher"
+              width={40}
+              height={40}
+              className="brandLogoImg"
+              priority
+            />
+          </div>
+          <span className="brandTitle">ClawdSearcher</span>
+        </button>
 
         <div className="headerRight">
           <button
@@ -23,32 +40,16 @@ export default function Home() {
           >
             Connect wallet
           </button>
-
           {soon ? <div className="soon">Coming soon</div> : null}
         </div>
       </header>
 
       <main className="main">
         <p className="tagline">
-          We are looking for gems at an early stage in the Clawd ecosystem
+          We are looking for gems at an early stage in the Clawd ecosystem.
         </p>
 
-        <div className="miniCluster">
-          <section className="miniCard">
-            <div className="miniLogo">
-              <Image
-                src="/logo.jpg"
-                alt="ClawdSearcher logo"
-                width={56}
-                height={56}
-                className="miniLogoImg"
-                priority
-              />
-            </div>
-
-            <div className="miniTitle">ClawdSearcher</div>
-          </section>
-
+        {showSlots && (
           <div className="miniGrid">
             {tiles.map((label, i) => (
               <button
@@ -61,7 +62,7 @@ export default function Home() {
               </button>
             ))}
           </div>
-        </div>
+        )}
 
         <a
           href={TWITTER_URL}
