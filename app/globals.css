@@ -3,9 +3,7 @@
   --ink: #0b1220;
   --muted: rgba(11, 18, 32, 0.65);
   --card: #0b1220;
-  --card2: #0a1020;
   --line: rgba(11, 18, 32, 0.14);
-  --glow: rgba(56, 189, 248, 0.35);
 }
 
 *,
@@ -27,13 +25,13 @@ body {
   color: var(--ink);
 }
 
-/* Общий лэйаут страницы */
+/* Лэйаут */
 
 .page {
   min-height: 100%;
 }
 
-/* Шапка: название + иконка лупы + Connect wallet */
+/* Шапка */
 
 .header {
   position: sticky;
@@ -46,16 +44,13 @@ body {
   gap: 16px;
   background: linear-gradient(
     to bottom,
-    rgba(244, 234, 219, 0.92),
+    rgba(244, 234, 219, 0.96),
     rgba(244, 234, 219, 0)
   );
   backdrop-filter: blur(6px);
 }
 
 .brandTopLeft {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
   font-size: 34px;
   font-weight: 750;
   letter-spacing: -0.06em;
@@ -65,28 +60,6 @@ body {
   color: transparent;
 }
 
-.brandIcon {
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  background: #f4eadb;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow:
-    0 0 0 1px rgba(11, 18, 32, 0.12),
-    0 4px 10px rgba(11, 18, 32, 0.18);
-}
-
-.brandIcon svg {
-  width: 14px;
-  height: 14px;
-  stroke: #0b1220;
-  stroke-width: 1.6;
-  fill: none;
-  stroke-linecap: round;
-}
-
 .headerRight {
   display: flex;
   flex-direction: column;
@@ -94,26 +67,30 @@ body {
   gap: 8px;
 }
 
+/* Главная кнопка (Connect wallet) – чуть темнее фона */
+
 .walletButton {
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.75);
-  color: var(--ink);
-  padding: 10px 16px;
+  border: 1px solid #cebfa8;
+  background: #e6d8c4;        /* темнее, но в той же гамме */
+  color: #111827;
+  padding: 10px 18px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 650;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(11, 18, 32, 0.12);
+  box-shadow: 0 10px 28px rgba(11, 18, 32, 0.16);
   transition:
     transform 120ms ease,
-    box-shadow 120ms ease;
+    box-shadow 120ms ease,
+    background-color 120ms ease;
 }
 
 .walletButton:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 34px rgba(11, 18, 32, 0.16);
+  background: #ddccb5;
+  box-shadow: 0 14px 36px rgba(11, 18, 32, 0.2);
 }
 
 .soon {
@@ -121,7 +98,7 @@ body {
   color: var(--muted);
 }
 
-/* Основная зона контента */
+/* Основная часть */
 
 .main {
   max-width: 980px;
@@ -133,33 +110,48 @@ body {
   gap: 18px;
 }
 
-/* Текст над главным окном */
+/* Текст‑описание в том же стиле, что название */
 
 .tagline {
-  margin: 0 0 14px;
-  font-size: 14px;
+  margin: 0 0 18px;
+  font-size: 16px;
   line-height: 1.5;
-  color: var(--muted);
   text-align: center;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, #0b1220, #3b4252);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-/* Мини‑карточка: только лого + ClawdSearcher */
+/* Кластер: главное окно + 4 всплывающих окна */
+
+.miniCluster {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+/* Главное окно */
 
 .miniCard {
   width: min(520px, 100%);
   background:
-    radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.12), transparent 55%),
+    radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.14), transparent 55%),
     linear-gradient(145deg, rgba(11, 18, 32, 0.98), rgba(7, 10, 18, 0.96));
-  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   padding: 18px 18px;
   display: flex;
   align-items: center;
   gap: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
     0 26px 70px rgba(11, 18, 32, 0.35),
     0 0 0 1px rgba(11, 18, 32, 0.6);
 }
+
+/* Лого внутри окна */
 
 .miniLogo {
   width: 56px;
@@ -179,11 +171,45 @@ body {
   display: block;
 }
 
+/* Текст в окне */
+
 .miniTitle {
   font-size: 22px;
   font-weight: 720;
   letter-spacing: -0.04em;
   color: rgba(255, 255, 255, 0.96);
+}
+
+/* Четыре дополнительных окна под основным */
+
+.miniGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: min(520px, 100%);
+}
+
+.miniTile {
+  border-radius: 12px;
+  border: 1px solid rgba(11, 18, 32, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 8px 22px rgba(11, 18, 32, 0.12);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    background-color 120ms ease;
+}
+
+.miniTile:hover {
+  transform: translateY(-1px);
+  background: #f3e6d4;
+  box-shadow: 0 12px 30px rgba(11, 18, 32, 0.16);
 }
 
 /* Кнопка Twitter */
