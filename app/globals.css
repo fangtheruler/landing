@@ -1,11 +1,11 @@
 :root {
-  --bg: #3a2228;
-  --bg-soft: #4a2d35;
-  --card: #523540;
-  --card-hover: #5e3d4a;
-  --ink: #f2e6ea;
-  --muted: rgba(242, 230, 234, 0.75);
-  --line: rgba(242, 230, 234, 0.12);
+  --bg: #4a3038;
+  --bg-soft: #5a4048;
+  --card: #6b4a55;
+  --card-hover: #7a5560;
+  --ink: #f5ebee;
+  --muted: rgba(245, 235, 238, 0.78);
+  --line: rgba(245, 235, 238, 0.14);
 }
 
 *,
