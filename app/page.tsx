@@ -66,13 +66,9 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="main">
+           <main className="main">
         <p className="tagline">
           We are looking for gems at an early stage in the Clawd ecosystem.
-        </p>
-
-        <p className="taglineSub">
-          We launch our token on base CA:
         </p>
 
         {showSlots && (
@@ -102,7 +98,8 @@ export default function Home() {
             <path d="M17.23 3H20.09L13.98 9.98L21.17 21H15.66L11.23 14.25L6.06 21H3.19L9.76 13.52L2.83 3H8.47L12.45 9.12L17.23 3ZM16.27 19.1H17.79L7.82 4.8H6.18L16.27 19.1Z" />
           </svg>
         </a>
+
+        <p className="taglineSub">
+          We launch our token on base CA:
+        </p>
       </main>
-    </div>
-  );
-}
