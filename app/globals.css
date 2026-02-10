@@ -1,11 +1,11 @@
 :root {
-  --bg: #f5efe4;           /* молочно-бежевый фон */
-  --card-bg: #020617;
-  --card-border: rgba(15, 23, 42, 0.18);
-  --accent: #38bdf8;
-  --accent-soft: rgba(56, 189, 248, 0.18);
-  --text-main: #020617;
-  --text-muted: #4b5563;
+  --bg: #f4eadb; /* молочно-бежевый */
+  --ink: #0b1220;
+  --muted: rgba(11, 18, 32, 0.65);
+  --card: #0b1220;
+  --card2: #0a1020;
+  --line: rgba(11, 18, 32, 0.14);
+  --glow: rgba(56, 189, 248, 0.35);
 }
 
 *,
@@ -16,182 +16,149 @@
 
 html,
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display",
-    "Inter", sans-serif;
-  color: var(--text-main);
-  background: var(--bg);
+  height: 100%;
 }
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--ink);
 }
 
-.app-root {
-  width: 100%;
-  max-width: 960px;
-  padding: 40px 20px 56px;
+/* Лэйаут */
+.page {
+  min-height: 100%;
 }
 
-/* Верхняя панель: название + Connect wallet */
-
-.top-bar {
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 18px 22px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 40px;
+  background: linear-gradient(to bottom, rgba(244, 234, 219, 0.92), rgba(244, 234, 219, 0));
+  backdrop-filter: blur(6px);
 }
 
-.site-title {
+.brandTopLeft {
   font-size: 34px;
-  font-weight: 700;
-  letter-spacing: -0.08em;
-  background: linear-gradient(120deg, #111827, #4b5563);
+  font-weight: 750;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  background: linear-gradient(120deg, #0b1220, #3b4252);
   -webkit-background-clip: text;
   color: transparent;
 }
 
-.wallet-button {
-  padding: 8px 18px;
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.walletButton {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--ink);
+  padding: 10px 16px;
   border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.18);
-  background: #ffffff;
-  color: #111827;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow:
-    0 8px 30px rgba(15, 23, 42, 0.12),
-    0 0 0 1px rgba(255, 255, 255, 0.5);
-  transition:
-    transform 0.1s ease,
-    box-shadow 0.15s ease,
-    background 0.15s ease;
+  box-shadow: 0 10px 30px rgba(11, 18, 32, 0.12);
+  transition: transform 120ms ease, box-shadow 120ms ease;
 }
 
-.wallet-button:hover {
+.walletButton:hover {
   transform: translateY(-1px);
-  background: #f9fafb;
-  box-shadow:
-    0 10px 34px rgba(15, 23, 42, 0.16),
-    0 0 0 1px rgba(148, 163, 184, 0.6);
+  box-shadow: 0 14px 34px rgba(11, 18, 32, 0.16);
 }
 
-/* Основное окно с иконкой и названием */
+.soon {
+  font-size: 12px;
+  color: var(--muted);
+}
 
-.card {
-  position: relative;
-  border-radius: 26px;
-  padding: 18px 22px;
-  max-width: 540px;
+.main {
+  max-width: 980px;
   margin: 0 auto;
-  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.94), #020617);
-  border: 1px solid var(--card-border);
-  box-shadow:
-    0 24px 70px rgba(15, 23, 42, 0.6),
-    0 0 0 1px rgba(15, 23, 42, 0.9);
-  color: #e5e7eb;
-}
-
-.clawd-card {
+  padding: 46px 22px 70px;
   display: flex;
-  align-items: center;
-}
-
-.card-inner {
-  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 18px;
 }
 
-/* Логотип не растягивается */
-
-.logo-wrapper {
-  width: 64px;
-  height: 64px;
+/* Мини-карточка (только лого + текст) */
+.miniCard {
+  width: min(520px, 100%);
+  background: radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.12), transparent 55%),
+    linear-gradient(145deg, rgba(11, 18, 32, 0.98), rgba(7, 10, 18, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
-  overflow: hidden;
-  background: radial-gradient(circle at 30% 0, #f97316, #0b1120);
+  padding: 18px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
   box-shadow:
-    0 0 0 1px rgba(15, 23, 42, 0.9),
-    0 14px 32px rgba(15, 23, 42, 0.9);
+    0 26px 70px rgba(11, 18, 32, 0.35),
+    0 0 0 1px rgba(11, 18, 32, 0.6);
 }
 
-.logo-img {
+.miniLogo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.miniLogoImg {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover; /* НЕ растягивает, заполняет красиво */
+  display: block;
 }
 
-.card-title {
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: -0.06em;
-  color: #f9fafb;
-  text-shadow:
-    0 0 18px rgba(15, 23, 42, 0.8),
-    0 0 4px rgba(15, 23, 42, 0.8);
+.miniTitle {
+  font-size: 22px;
+  font-weight: 720;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.96);
 }
 
-/* Кнопка Twitter, чуть больше */
-
-.actions-row {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.twitter-button {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+/* Кнопка Twitter чуть больше */
+.twitterBtn {
+  width: 54px;
+  height: 54px;
   border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.16);
-  background: #ffffff;
-  cursor: pointer;
-  box-shadow:
-    0 14px 40px rgba(15, 23, 42, 0.22),
-    0 0 0 1px rgba(255, 255, 255, 0.8);
-  transition:
-    transform 0.1s ease,
-    box-shadow 0.15s ease,
-    border-color 0.15s ease;
+  border: 1px solid rgba(11, 18, 32, 0.14);
+  background: rgba(255, 255, 255, 0.75);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 16px 44px rgba(11, 18, 32, 0.16);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  text-decoration: none;
 }
 
-.twitter-button-round {
-  width: 46px;
-  height: 46px;
-}
-
-.twitter-button:hover {
+.twitterBtn:hover {
   transform: translateY(-1px);
-  border-color: rgba(56, 189, 248, 0.7);
-  box-shadow:
-    0 18px 46px rgba(15, 23, 42, 0.3),
-    0 0 0 1px rgba(56, 189, 248, 0.6);
+  box-shadow: 0 20px 52px rgba(11, 18, 32, 0.2);
 }
 
-.twitter-icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 0, #38bdf8, #0f172a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.85);
-}
-
-.twitter-icon svg {
-  width: 12px;
-  height: 12px;
-  fill: #e5e7eb;
+.xIcon {
+  width: 18px;
+  height: 18px;
+  fill: #0b1220;
 }
