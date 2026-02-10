@@ -28,11 +28,7 @@ export default function Home() {
   return (
     <div className="page">
       <div className="logoBg" aria-hidden="true">
-        <img
-          src="/logo-bg.png"
-          alt=""
-          className="logoBgImg"
-        />
+        <img src="/logo-bg.png" alt="" className="logoBgImg" />
       </div>
 
       <header className="header">
@@ -66,7 +62,7 @@ export default function Home() {
         </div>
       </header>
 
-           <main className="main">
+      <main className="main">
         <p className="tagline">
           We are looking for gems at an early stage in the Clawd ecosystem.
         </p>
@@ -103,3 +99,6 @@ export default function Home() {
           We launch our token on base CA:
         </p>
       </main>
+    </div>
+  );
+}
