@@ -26,7 +26,8 @@ export default function Home() {
   }, []);
 
   return (
-          <div className="logoBg" aria-hidden="true">
+    <div className="page">
+      <div className="logoBg" aria-hidden="true">
         <Image
           src="/logo-bg.png"
           alt=""
@@ -36,6 +37,7 @@ export default function Home() {
           priority
         />
       </div>
+
       <header className="header">
         <button
           type="button"
