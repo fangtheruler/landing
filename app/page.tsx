@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./globals.css";
 
 const TWITTER_URL = "https://twitter.com/your_handle";
@@ -10,6 +10,20 @@ export default function Home() {
   const [soon, setSoon] = useState(false);
   const [showSlots, setShowSlots] = useState(false);
   const tiles = ["Slot 1", "Slot 2", "Slot 3", "Slot 4"];
+
+  useEffect(() => {
+    const el = document.documentElement;
+    const down = () => el.classList.add("claw-pressed");
+    const up = () => el.classList.remove("claw-pressed");
+    el.addEventListener("mousedown", down);
+    el.addEventListener("mouseup", up);
+    el.addEventListener("mouseleave", up);
+    return () => {
+      el.removeEventListener("mousedown", down);
+      el.removeEventListener("mouseup", up);
+      el.removeEventListener("mouseleave", up);
+    };
+  }, []);
 
   return (
     <div className="page">
