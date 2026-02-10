@@ -23,8 +23,12 @@ body {
   min-height: 100%;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Inter", sans-serif;
-  color: var(--text-main);
-  background: radial-gradient(circle at top, #1e293b 0, #020617 60%);
+  color: #111827;
+  background: #f5efe4; /* молочно-бежевый фон */
+}
+
+body {
+  display: block;
 }
 
 body {
