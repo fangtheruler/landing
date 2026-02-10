@@ -53,10 +53,8 @@ button,
 }
 
 .logoBgImg {
-  width: 85vw !important;
-  max-width: 900px;
-  height: auto !important;
-  max-height: 85vh;
+  width: min(85vw, 900px);
+  height: auto;
   object-fit: contain;
   object-position: center;
   opacity: 0.12;
