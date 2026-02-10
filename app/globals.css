@@ -2,7 +2,7 @@
   --bg: #f4eadb; /* молочно-бежевый фон */
   --ink: #0b1220;
   --muted: rgba(11, 18, 32, 0.65);
-  --card: #0b1220;
+  --card: #e1d1be; /* чуть темнее фона */
   --line: rgba(11, 18, 32, 0.14);
 }
 
@@ -24,8 +24,6 @@ body {
   background: var(--bg);
   color: var(--ink);
 }
-
-/* Лэйаут */
 
 .page {
   min-height: 100%;
@@ -67,11 +65,11 @@ body {
   gap: 8px;
 }
 
-/* Главная кнопка (Connect wallet) – чуть темнее фона */
+/* Главная кнопка */
 
 .walletButton {
   border: 1px solid #cebfa8;
-  background: #e6d8c4;        /* темнее, но в той же гамме */
+  background: #e6d8c4;
   color: #111827;
   padding: 10px 18px;
   border-radius: 999px;
@@ -107,61 +105,62 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 22px;
 }
 
-/* Текст‑описание в том же стиле, что название */
+/* Текст над главным окном — крупнее и тем же стилем, что логотип */
 
 .tagline {
-  margin: 0 0 18px;
-  font-size: 16px;
-  line-height: 1.5;
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.6;
   text-align: center;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  max-width: 720px;
   background: linear-gradient(120deg, #0b1220, #3b4252);
   -webkit-background-clip: text;
   color: transparent;
 }
 
-/* Кластер: главное окно + 4 всплывающих окна */
+/* Кластер: главное окно + скрытые плитки */
 
 .miniCluster {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 10px;
+  align-items: center;
+  gap: 14px;
 }
 
 /* Главное окно */
 
 .miniCard {
-  width: min(520px, 100%);
-  background:
-    radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.14), transparent 55%),
-    linear-gradient(145deg, rgba(11, 18, 32, 0.98), rgba(7, 10, 18, 0.96));
+  width: 220px;
+  background: var(--card);
   border-radius: 18px;
-  padding: 18px 18px;
+  padding: 14px 16px;
   display: flex;
   align-items: center;
-  gap: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 12px;
+  border: 1px solid rgba(11, 18, 32, 0.08);
   box-shadow:
-    0 26px 70px rgba(11, 18, 32, 0.35),
-    0 0 0 1px rgba(11, 18, 32, 0.6);
+    0 18px 40px rgba(11, 18, 32, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.6);
+  cursor: default;
 }
 
-/* Лого внутри окна */
+/* Лого в главном окне */
 
 .miniLogo {
-  width: 56px;
-  height: 56px;
+  width: 46px;
+  height: 46px;
   border-radius: 14px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.06);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 14px 30px rgba(0, 0, 0, 0.35);
+    0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
 .miniLogoImg {
@@ -174,42 +173,63 @@ body {
 /* Текст в окне */
 
 .miniTitle {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 720;
   letter-spacing: -0.04em;
-  color: rgba(255, 255, 255, 0.96);
+  color: rgba(11, 18, 32, 0.95);
 }
 
-/* Четыре дополнительных окна под основным */
+/* Четыре окна — по площади существенно больше главного, скрыты по умолчанию */
 
 .miniGrid {
+  position: absolute;
+  top: 100%;
+  margin-top: 14px;
+  width: 660px;              /* ~3 раза шире главного */
+  max-width: 100vw;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  width: min(520px, 100%);
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition:
+    opacity 160ms ease-out,
+    transform 160ms ease-out;
 }
 
+/* Показываем плитки, когда навели на кластер (главное окно) */
+
+.miniCluster:hover .miniGrid {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Одна плитка */
+
 .miniTile {
-  border-radius: 12px;
+  min-height: 120px;          /* заметно выше, чем главное окно */
+  border-radius: 16px;
   border: 1px solid rgba(11, 18, 32, 0.08);
-  background: rgba(255, 255, 255, 0.85);
-  padding: 10px 12px;
-  font-size: 13px;
-  font-weight: 500;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 18px 18px;
+  font-size: 15px;
+  font-weight: 540;
   color: var(--ink);
   cursor: pointer;
   text-align: left;
-  box-shadow: 0 8px 22px rgba(11, 18, 32, 0.12);
+  box-shadow: 0 18px 40px rgba(11, 18, 32, 0.18);
   transition:
-    transform 120ms ease,
-    box-shadow 120ms ease,
-    background-color 120ms ease;
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    background-color 140ms ease;
 }
 
 .miniTile:hover {
-  transform: translateY(-1px);
-  background: #f3e6d4;
-  box-shadow: 0 12px 30px rgba(11, 18, 32, 0.16);
+  transform: translateY(-2px);
+  background: #f1e2cf;
+  box-shadow: 0 22px 52px rgba(11, 18, 32, 0.22);
 }
 
 /* Кнопка Twitter */
