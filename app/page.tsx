@@ -96,7 +96,7 @@ export default function Home() {
         </a>
 
         <p className="taglineSub">
-          We launch our token on base CA:
+          We launch our token on base CA:0x7D8f3e777f259aec309e0133900D864406272B07
         </p>
       </main>
     </div>
