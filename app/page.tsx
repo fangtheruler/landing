@@ -1,27 +1,42 @@
+"use client";
+
 import Image from "next/image";
 import "./globals.css";
 
 const TWITTER_URL = "https://twitter.com/your_handle"; // замени на свой Twitter
 
 export default function Home() {
-  return (
-    <main className="main-shell">
-      <div className="glow-orbit" aria-hidden="true" />
+  const handleConnectClick = () => {
+    alert("Coming soon");
+  };
 
-      <section className="card">
-        <div className="card-grid">
-          <div>
-            <div className="brand">
-              <div className="brand-logo">
+  return (
+    <main className="page">
+      {/* Верхняя панель: название слева, кнопка Connect wallet справа */}
+      <header className="page-header">
+        <div className="site-title">ClawdSearcher</div>
+
+        <button className="wallet-button" onClick={handleConnectClick}>
+          Connect wallet
+        </button>
+      </header>
+
+      {/* Центр: маленькое “окно” только с иконкой и названием + кнопка Twitter */}
+      <div className="center-shell">
+        <section className="card card--compact">
+          <div className="card-row">
+            <div className="brand-horizontal">
+              <div className="brand-logo brand-logo--small">
                 <Image
                   src="/logo.jpg"
                   alt="ClawdSearcher logo"
-                  width={56}
-                  height={56}
+                  width={40}
+                  height={40}
+                  style={{ objectFit: "contain" }}
                   priority
                 />
               </div>
-              <div className="brand-title">ClawdSearcher</div>
+              <span className="brand-name-fancy">ClawdSearcher</span>
             </div>
 
             <div className="actions">
@@ -29,7 +44,7 @@ export default function Home() {
                 href={TWITTER_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="twitter-button twitter-button--icon-only"
+                className="twitter-button twitter-button--bigger"
                 aria-label="Open Twitter profile"
               >
                 <span className="twitter-icon">
@@ -40,14 +55,8 @@ export default function Home() {
               </a>
             </div>
           </div>
-
-          <aside className="visual-panel" aria-hidden="true">
-            <div className="visual-body">
-              <div className="visual-metrics" />
-            </div>
-          </aside>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }
