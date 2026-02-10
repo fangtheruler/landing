@@ -28,7 +28,6 @@ body {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Cpath fill='%23f5e6eb' stroke='%238b5a6b' stroke-width='1' d='M14 4 Q6 10 8 18 L14 22 L14 4 Z M18 4 Q26 10 24 18 L18 22 L18 4 Z'/%3E%3C/svg%3E") 8 8, auto;
 }
 
-/* Сжатая клешня — кончики касаются */
 html.claw-pressed,
 html.claw-pressed * {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Cpath fill='%23f5e6eb' stroke='%238b5a6b' stroke-width='1' d='M14 4 Q4 12 10 20 L14 22 L16 14 Z M18 4 Q28 12 22 20 L18 22 L16 14 Z'/%3E%3C/svg%3E") 8 8, pointer;
@@ -36,12 +35,15 @@ html.claw-pressed * {
 
 a,
 button,
-[role='button'] {
+[role="button"] {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Cpath fill='%23f5e6eb' stroke='%238b5a6b' stroke-width='1' d='M14 4 Q6 10 8 18 L14 22 L14 4 Z M18 4 Q26 10 24 18 L18 22 L18 4 Z'/%3E%3C/svg%3E") 8 8, pointer;
 }
 
 .page {
-  /* Крупный логотип на фоне, «в тени» */
+  min-height: 100%;
+  position: relative;
+}
+
 .logoBg {
   position: fixed;
   inset: 0;
@@ -70,7 +72,7 @@ button,
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-   background: linear-gradient(
+  background: linear-gradient(
     to bottom,
     rgba(74, 48, 56, 0.96),
     rgba(74, 48, 56, 0)
