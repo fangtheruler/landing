@@ -27,6 +27,16 @@ export default function Home() {
 
   return (
     <div className="page">
+      <div className="lobsterCorner" aria-hidden="true">
+        <Image
+          src="/lobster.png"
+          alt=""
+          width={200}
+          height={200}
+          className="lobsterImg"
+        />
+      </div>
+
       <header className="header">
         <button
           type="button"
